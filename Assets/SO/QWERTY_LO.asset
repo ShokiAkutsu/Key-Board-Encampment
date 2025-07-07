@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 369b79c78f4253a46b6f99c2bdd09f29, type: 3}
+  m_Name: QWERTY_LO
+  m_EditorClassIdentifier: 
+  upperPositions:
+  - key: Q
+    position: {x: 0, y: 0}
+  - key: W
+    position: {x: 1, y: 0}
+  - key: E
+    position: {x: 2, y: 0}
+  - key: R
+    position: {x: 3, y: 0}
+  - key: T
+    position: {x: 4, y: 0}
+  - key: Y
+    position: {x: 5, y: 0}
+  - key: U
+    position: {x: 6, y: 0}
+  - key: I
+    position: {x: 7, y: 0}
+  - key: O
+    position: {x: 8, y: 0}
+  - key: P
+    position: {x: 9, y: 0}
+  middlePositions:
+  - key: A
+    position: {x: 0.5, y: 1}
+  - key: S
+    position: {x: 1.5, y: 1}
+  - key: D
+    position: {x: 2.5, y: 1}
+  - key: F
+    position: {x: 3.5, y: 1}
+  - key: G
+    position: {x: 4.5, y: 1}
+  - key: H
+    position: {x: 5.5, y: 1}
+  - key: J
+    position: {x: 6.5, y: 1}
+  - key: K
+    position: {x: 7.5, y: 1}
+  - key: L
+    position: {x: 8.5, y: 1}
+  lowerPositions:
+  - key: Z
+    position: {x: 1, y: 2}
+  - key: X
+    position: {x: 2, y: 2}
+  - key: C
+    position: {x: 3, y: 2}
+  - key: V
+    position: {x: 4, y: 2}
+  - key: B
+    position: {x: 5, y: 2}
+  - key: N
+    position: {x: 6, y: 2}
+  - key: M
+    position: {x: 7, y: 2}
