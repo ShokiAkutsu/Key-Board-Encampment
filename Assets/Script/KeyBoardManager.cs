@@ -8,23 +8,24 @@ public class KeyboardManager : MonoBehaviour
 	[Header("キー配列情報SO")]
 	[SerializeField] KeyStandardPositionSO _layoutData;
 	[Header("キープレハブの格納")]
-	[SerializeField] KeyTile _keyTilePrefab;
+	[SerializeField] KeyTileDataBase _keyTilePrefab;
 	[Header("キー同士の間隔")]
 	[SerializeField] float _keyDistance = 1.2f;
 	[Header("キーPrefabの保持Obj")]
 	[SerializeField] Transform _parent;
 
-	Dictionary<KeyCode, KeyTile> _tiles;	//キーボード配列の情報List
+	Dictionary<KeyCode, KeyTileDataBase> _tiles;	//キーボード配列の情報List
+	KeyAdjacentManager _AdjacentManager;
 
 	private void Start()
 	{
 		List<KeyValuePair<string, Vector2>> _keyPosition = _layoutData.GetAllKeyValuePairs();
-		_tiles = new Dictionary<KeyCode, KeyTile>();
+		_tiles = new Dictionary<KeyCode, KeyTileDataBase>();
 
 		foreach (var keyData in _keyPosition)
 		{
 			Vector2 worldPos = GridToWorldPosition(keyData.Value);
-			KeyTile tile = Instantiate(_keyTilePrefab, worldPos, Quaternion.identity, _parent);
+			KeyTileDataBase tile = Instantiate(_keyTilePrefab, worldPos, Quaternion.identity, _parent);
 			tile.Init(keyData);
 			//対応キーコードを格納する
 			KeyCode keyCode;
@@ -34,6 +35,8 @@ public class KeyboardManager : MonoBehaviour
 		}
 
 		_keyPosition.Clear();
+
+		_AdjacentManager = GameObject.Find("Manager").GetComponent<KeyAdjacentManager>();
 	}
 
 	private void Update()
@@ -43,9 +46,11 @@ public class KeyboardManager : MonoBehaviour
 			if (Input.GetKeyDown(key))
 			{
 				// 対応するタイルを取得
-				KeyTile tile = _tiles[key];
+				KeyTileDataBase tile = _tiles[key];
 				// タイルに命令(デバッグ用関数)
-				tile.SetActiveRed();
+				//tile.SetActiveRed();
+				//隣接判定、押されたキーの格納
+				_AdjacentManager.HandleKeyInput(tile);
 			}
 		}
 	}

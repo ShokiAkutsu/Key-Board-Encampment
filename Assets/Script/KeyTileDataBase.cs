@@ -4,26 +4,40 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KeyTile : MonoBehaviour
+public class KeyTileDataBase : MonoBehaviour
 {
 	//定義
 	KeyStandardPositionSO _keyPositionSO;
+	[SerializeField] KeyTileDataSO _keyTileDataSO;
 	[SerializeField] Canvas _canvas;
 	[SerializeField] Text _textAlphabet;
 	SpriteRenderer _sr;
+	Color _color;
 	//変数
 	string _keyName;
 	Vector2 _keyPosition;
+	KeyTileState _state;
 	public string KeyName => _keyName;
 	public Vector2 KeyPosition => _keyPosition;
+	public Color Color => _color;
+	public KeyTileState State => _state;
 
+	/*
 	private void Start()
 	{
 		_sr = GetComponent<SpriteRenderer>();
+		_color = Color.white;
 	}
+	*/
 
 	public void Init(KeyValuePair<string, Vector2> data)
 	{
+		if(_sr == null)
+		{
+			_sr = GetComponent<SpriteRenderer>();
+		}
+		_color = Color.white;
+
 		_keyName = data.Key;
 		_keyPosition = data.Value;
 
@@ -33,7 +47,20 @@ public class KeyTile : MonoBehaviour
         this.gameObject.name = _keyName;
 		_textAlphabet.text = _keyName;
 
-		Debug.Log($"{_keyName}は{_keyPosition}で設定");
+
+		//デバッグ用　あとで別マネージャーで管理するようにする
+		if(_keyName == "A")
+		{
+			_state = KeyTileState.Player_Red;
+			_color = _keyTileDataSO.KeyTileStates[_state].KeyColor;
+		}
+		if(_keyName == "P")
+		{
+			_state = KeyTileState.Player_Blue;
+			_color = _keyTileDataSO.KeyTileStates[_state].KeyColor;
+		}
+
+		_sr.color = _color;
 	}
 
 	private void WindowToCanvasRect()
@@ -60,8 +87,19 @@ public class KeyTile : MonoBehaviour
 	/// <summary>
 	/// デバッグ用メソッド
 	/// </summary>
-	public void SetActiveRed()
+	//public void SetActiveRed()
+	//{
+	//	_sr.color = Color.red;
+	//	_color = _sr.color;
+	//}
+
+	/// <summary>
+	/// KeyTileのステータスのアップデート
+	/// </summary>
+	public void ChangeTileStates(KeyTileDataBase data)
 	{
-		_sr.color = Color.red;
+		_state = data._state;
+		_color = _keyTileDataSO.KeyTileStates[_state].KeyColor;
+		_sr.color = _color;
 	}
 }

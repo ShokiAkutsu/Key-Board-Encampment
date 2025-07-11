@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 6498888012752631549}
   m_Layer: 0
   m_Name: KeyPin Prefab
-  m_TagString: Untagged
+  m_TagString: KeyBoard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a1731e6eeaf2c4eb2a387059467e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _keyTileDataSO: {fileID: 11400000, guid: a96dd792223e4064daa767a880b5b62e, type: 2}
   _canvas: {fileID: 5780976194105093183}
   _textAlphabet: {fileID: 1451595008342594692}
 --- !u!1 &7561321374818514820
