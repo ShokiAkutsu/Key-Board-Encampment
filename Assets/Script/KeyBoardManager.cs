@@ -22,6 +22,10 @@ public class KeyboardManager : MonoBehaviour
 		List<KeyValuePair<string, Vector2>> _keyPosition = _layoutData.GetAllKeyValuePairs();
 		_tiles = new Dictionary<KeyCode, KeyTileDataBase>();
 
+		//RandomƒNƒ‰ƒX‚ğÅ—Dæ‚É¶¬
+		//RandomKeyManager randomKey = GameObject.Find("Manager").GetComponent<RandomKeyManager>();
+		//randomKey.Init();
+
 		foreach (var keyData in _keyPosition)
 		{
 			Vector2 worldPos = GridToWorldPosition(keyData.Value);

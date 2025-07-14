@@ -40,14 +40,14 @@ public class KeyTileDataBase : MonoBehaviour
         this.gameObject.name = _keyName;
 		_textAlphabet.text = _keyName;
 
-
+		RandomKeyManager randomKeyManager = GameObject.Find("Manager").GetComponent<RandomKeyManager>();
 		//デバッグ用　あとで別マネージャーで管理するようにする
-		if(_keyName == "A")
+		if(_keyName == randomKeyManager.P1KeyName)
 		{
 			_state = KeyTileState.Player_Red;
 			_color = _keyTileDataSO.KeyTileStates[_state].KeyColor;
 		}
-		if(_keyName == "P")
+		else if(_keyName == randomKeyManager.P2KeyName)
 		{
 			_state = KeyTileState.Player_Blue;
 			_color = _keyTileDataSO.KeyTileStates[_state].KeyColor;
