@@ -22,14 +22,7 @@ public class KeyTileDataBase : MonoBehaviour
 	public Color Color => _color;
 	public KeyTileState State => _state;
 
-	/*
-	private void Start()
-	{
-		_sr = GetComponent<SpriteRenderer>();
-		_color = Color.white;
-	}
-	*/
-
+	
 	public void Init(KeyValuePair<string, Vector2> data)
 	{
 		if(_sr == null)
@@ -83,15 +76,6 @@ public class KeyTileDataBase : MonoBehaviour
 	{
 		
 	}
-
-	/// <summary>
-	/// デバッグ用メソッド
-	/// </summary>
-	//public void SetActiveRed()
-	//{
-	//	_sr.color = Color.red;
-	//	_color = _sr.color;
-	//}
 
 	/// <summary>
 	/// KeyTileのステータスのアップデート

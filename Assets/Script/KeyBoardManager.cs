@@ -47,28 +47,11 @@ public class KeyboardManager : MonoBehaviour
 			{
 				// 対応するタイルを取得
 				KeyTileDataBase tile = _tiles[key];
-				// タイルに命令(デバッグ用関数)
-				//tile.SetActiveRed();
 				//隣接判定、押されたキーの格納
 				_AdjacentManager.HandleKeyInput(tile);
 			}
 		}
 	}
-
-	/*
-	/// <summary>
-	/// キー座標(画面上)の座標を取得
-	/// </summary>
-	public Vector2Int GetKeyPosition(string key)
-	{
-		if (_tiles.TryGetValue(key, out var pos))
-		{
-			return pos;
-		}
-			
-		return new Vector2Int(-1, -1); // 位置がない場合
-	}
-	*/
 
 	/// <summary>
 	/// グリッド座標をワールド座標に変換
